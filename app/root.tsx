@@ -6,6 +6,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import '@fontsource/petit-formal-script';
+import '@fontsource-variable/cormorant-garamond';
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -23,12 +25,13 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
         <Meta />
         <Links />
       </head>
