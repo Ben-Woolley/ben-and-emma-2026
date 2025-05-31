@@ -1,14 +1,11 @@
-import type { Route } from "./+types/home";
-import { HomePage } from "../homepage/homepage";
 import Container from "@mui/material/Container";
 import { Box, createTheme, Grid, ThemeProvider, Typography } from "@mui/material";
-
-export function meta({ }: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+import { createRoot } from "react-dom/client";
+import { StrictMode } from "react";
+import '@fontsource/petit-formal-script';
+import '@fontsource-variable/cormorant-garamond';
+import "./app.css";
+import { HomePage } from "../homepage/homepage.tsx";
 
 const theme = createTheme({
   palette: {
@@ -27,7 +24,14 @@ const theme = createTheme({
   }
 })
 
-export default function Home() {
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <Home />
+  </StrictMode>,
+)
+
+
+function Home() {
   return <ThemeProvider theme={theme}>
     <Container maxWidth={false} disableGutters>
       <Header />

@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Typography } from '@mui/material';
+import { Grid, Link, Typography } from '@mui/material';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -53,7 +53,7 @@ function a11yProps(index: number) {
 export function HomePage() {
     const [value, setValue] = React.useState(0);
 
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    const handleChange = (_: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
 
@@ -62,29 +62,43 @@ export function HomePage() {
             <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'white', borderRadius: '25px' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="home tabs" variant="scrollable" scrollButtons={true} allowScrollButtonsMobile>
                     <Tab label="Schedule" {...a11yProps(0)} />
-                    <Tab label="About the gardens" {...a11yProps(1)} />
-                    <Tab label="Getting there" {...a11yProps(2)} />
-                    <Tab label="Honeymoon fund" {...a11yProps(3)} />
-                    <Tab label="Q&A" {...a11yProps(4)} />
-                    <Tab label="RSVP" {...a11yProps(5)} />
+                    <Tab label="Getting there" {...a11yProps(1)} />
+                    <Tab label="Honeymoon fund" {...a11yProps(2)} />
+                    <Tab label="Q&A" {...a11yProps(3)} />
+                    <Tab label="RSVP" {...a11yProps(4)} />
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
                 <Schedule />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                <Typography>About the gardens</Typography>
+                <Grid container spacing={2} columns={2}>
+                    <Grid size={1}>
+                        <Typography><Link href='https://dorothyclivegarden.co.uk/'>Dorothy Clive Garden</Link> lives in the woodland quarter of Staffordshire.<br/>
+                        It's on Nantwich Road, 
+                        </Typography>
+                    </Grid>
+                    <Grid size={1}>
+                        <iframe width="100%" height="300" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.3700052499771123%2C52.954455501498%2C-2.3663574457168584%2C52.95852090457078&amp;layer=mapnik&amp;marker=52.95648673726256%2C-2.3681812500000206" style={{ border: '1px solid black' }}></iframe>
+                        <Link href="https://www.openstreetmap.org/?mlat=52.956487&amp;mlon=-2.368181#map=18/52.956487/-2.368181">View Larger Map</Link>
+                        <Typography sx={{pt: 2}} >
+                            Dorothy Clive Garden<br/>
+                            Willoughbridge<br/>
+                            Market Drayton<br/>
+                            Shropshire<br/>
+                            TF9 4EU<br/>
+                            Phone: 01630 647 237
+                        </Typography>
+                    </Grid>
+                </Grid>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-                <Typography>Getting there</Typography>
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={3}>
                 <Typography>Honeymoon fund</Typography>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={4}>
+            <CustomTabPanel value={value} index={3}>
                 <Qa />
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={5}>
+            <CustomTabPanel value={value} index={4}>
                 <Typography>RSVP</Typography>
             </CustomTabPanel>
         </Container>
@@ -118,13 +132,13 @@ function QuestionAndAnswer(props: QAProps) {
 
 function Schedule() {
     return <Timeline position='alternate'>
-        <ScheduleItem time='2:45pm' icon={<TimerIcon/>}>
+        <ScheduleItem time='2:45pm' icon={<TimerIcon />}>
             <Typography>Guest arrival</Typography>
         </ScheduleItem>
-        <ScheduleItem time='3:30pm' icon={<NotificationsIcon/>}>
+        <ScheduleItem time='3:30pm' icon={<NotificationsIcon />}>
             <Typography>Ceremony begins</Typography>
         </ScheduleItem>
-        <ScheduleItem time='4:15pm' icon={<PhotoCameraIcon/>}>
+        <ScheduleItem time='4:15pm' icon={<PhotoCameraIcon />}>
             <Typography>Drinks & photos</Typography>
             <Typography variant='body2'>Enjoy a glass of prosecco in the gardens</Typography>
         </ScheduleItem>
@@ -139,7 +153,7 @@ function Schedule() {
             <Typography>Cake cutting</Typography>
             <Typography variant='body2'>Nothing like cake after tea and cake</Typography>
         </ScheduleItem>
-        <ScheduleItem time='6:15pm' icon={<NightlifeIcon/>}>
+        <ScheduleItem time='6:15pm' icon={<NightlifeIcon />}>
             <Typography>First dance</Typography>
             <Typography variant='body2'>Join us in the tea room!</Typography>
         </ScheduleItem>
