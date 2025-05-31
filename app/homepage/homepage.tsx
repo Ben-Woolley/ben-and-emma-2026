@@ -126,30 +126,30 @@ function Schedule() {
         </ScheduleItem>
         <ScheduleItem time='4:15pm' icon={<PhotoCameraIcon/>}>
             <Typography>Drinks & photos</Typography>
-            <Typography>Enjoy a glass of prosecco in the gardens</Typography>
+            <Typography variant='body2'>Enjoy a glass of prosecco in the gardens</Typography>
         </ScheduleItem>
         <ScheduleItem time='5:00pm' icon={<IcecreamIcon />}>
             <Typography>Ice cream time</Typography>
-            <Typography>An ice cream cart will be set up near the tea room</Typography>
+            <Typography variant='body2'>An ice cream cart will be set up near the tea room</Typography>
         </ScheduleItem>
         <ScheduleItem time='5:30pm' icon={<EmojiFoodBeverageIcon />}>
             <Typography>Afternoon tea</Typography>
         </ScheduleItem>
         <ScheduleItem time='6:00pm' icon={<CakeIcon />}>
             <Typography>Cake cutting</Typography>
-            <Typography>Nothing like cake after tea and cake</Typography>
+            <Typography variant='body2'>Nothing like cake after tea and cake</Typography>
         </ScheduleItem>
         <ScheduleItem time='6:15pm' icon={<NightlifeIcon/>}>
             <Typography>First dance</Typography>
-            <Typography> Join us in the tea room!</Typography>
+            <Typography variant='body2'>Join us in the tea room!</Typography>
         </ScheduleItem>
         <ScheduleItem time='7:30pm' icon={<LocalPizzaIcon />}>
             <Typography>Pizza time</Typography>
-            <Typography>Jordy's Pizza will be available near the Bryan Mayer Pavilion</Typography>
+            <Typography variant='body2'>Jordy's Pizza will be available near the Bryan Mayer Pavilion</Typography>
         </ScheduleItem>
         <LastScheduleItem time='12:00am' icon={<LocalTaxiIcon />}>
             <Typography>Carriages</Typography>
-            <Typography>Music stops at 11:30 & everyone must be gone by midnight</Typography>
+            <Typography variant='body2'>Music stops at 11:30 & everyone must be gone by midnight</Typography>
         </LastScheduleItem>
     </Timeline>
 }
@@ -164,7 +164,7 @@ function ScheduleItem(props: ScheduleItemProps) {
     return <TimelineItem>
         <TimelineOppositeContent>{props.time}</TimelineOppositeContent>
         <TimelineSeparator>
-            <TimelineDot>{props.icon}</TimelineDot>
+            <TimelineDot color='primary'>{props.icon}</TimelineDot>
             <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent>{props.children}</TimelineContent>
@@ -174,7 +174,7 @@ function LastScheduleItem(props: ScheduleItemProps) {
     return <TimelineItem>
         <TimelineOppositeContent>{props.time}</TimelineOppositeContent>
         <TimelineSeparator>
-            <TimelineDot >{props.icon}</TimelineDot>
+            <TimelineDot color='primary'>{props.icon}</TimelineDot>
         </TimelineSeparator>
         <TimelineContent>{props.children}</TimelineContent>
     </TimelineItem>
