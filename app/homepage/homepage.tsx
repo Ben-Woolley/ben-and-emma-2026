@@ -31,15 +31,15 @@ function CustomTabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
 
     return (
-        <div
+        <Container
             role="tabpanel"
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
             {...other}
         >
-            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-        </div>
+            {value === index && <Container sx={{ p: 3 }}>{children}</Container>}
+        </Container>
     );
 }
 
@@ -60,7 +60,7 @@ export function HomePage() {
     return (
         <Container>
             <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'white', borderRadius: '25px' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="home tabs" variant="scrollable" scrollButtons={true} allowScrollButtonsMobile centered>
+                <Tabs value={value} onChange={handleChange} aria-label="home tabs" variant="scrollable" scrollButtons={true} allowScrollButtonsMobile>
                     <Tab label="Schedule" {...a11yProps(0)} />
                     <Tab label="About the gardens" {...a11yProps(1)} />
                     <Tab label="Getting there" {...a11yProps(2)} />
@@ -73,19 +73,19 @@ export function HomePage() {
                 <Schedule />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                About the gardens
+                <Typography>About the gardens</Typography>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-                Getting there
+                <Typography>Getting there</Typography>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={3}>
-                Honeymoon fund
+                <Typography>Honeymoon fund</Typography>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={4}>
                 <Qa />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={5}>
-                RSVP
+                <Typography>RSVP</Typography>
             </CustomTabPanel>
         </Container>
     )
@@ -108,10 +108,10 @@ interface QAProps {
 }
 function QuestionAndAnswer(props: QAProps) {
     let warningText = props.warning ?
-        <Typography variant='h6' align='center' fontFamily={'Cororant Garamond Variable'}>{props.warning}</Typography> : null;
+        <Typography variant='h6' align='center'>{props.warning}</Typography> : null;
     return <Box paddingBlockEnd={3}>
-        <Typography variant='h5' align='center' fontFamily={'Cormorant Garamond Variable'}>{props.question}</Typography>
-        <Typography align='center' fontFamily={'Cormorant Garamond Variable'}>{props.answer}</Typography>
+        <Typography variant='h5' align='center'>{props.question}</Typography>
+        <Typography align='center'>{props.answer}</Typography>
         {warningText}
     </Box>
 }
