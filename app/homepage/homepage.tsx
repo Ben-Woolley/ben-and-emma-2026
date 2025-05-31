@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Grid, Link, Typography } from '@mui/material';
+import { Grid, Link, styled, Typography } from '@mui/material';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -122,13 +122,37 @@ interface QAProps {
 }
 function QuestionAndAnswer(props: QAProps) {
     let warningText = props.warning ?
-        <Typography variant='h6' align='center'>{props.warning}</Typography> : null;
+        <Warning variant='h6' align='center'>{props.warning}</Warning> : null;
     return <Box paddingBlockEnd={3}>
-        <Typography variant='h5' align='center'>{props.question}</Typography>
-        <Typography align='center'>{props.answer}</Typography>
+        <Question>{props.question}</Question>
+        <Answer align='center'>{props.answer}</Answer>
         {warningText}
     </Box>
 }
+const Question = styled(Typography, {
+  name: 'MuiQuestion',
+  slot: 'value',
+})(({ theme }) => ({
+  ...theme.typography.body1,
+  fontWeight: 'bolder',
+  textAlign: 'center'
+}));
+const Answer = styled(Typography, {
+  name: 'MuiAnswer',
+  slot: 'value',
+})(({ theme }) => ({
+  ...theme.typography.body1,
+  textAlign: 'center'
+}));
+export const Warning = styled(Typography, {
+  name: 'MuiWarning',
+  slot: 'value',
+})(({ theme }) => ({
+  ...theme.typography.body1,
+  textAlign: 'center',
+  fontWeight: 'bold',
+  fontSize: '16pt'
+}));
 
 function Schedule() {
     return <Timeline position='alternate'>

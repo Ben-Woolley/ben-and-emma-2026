@@ -7,3 +7,10 @@ html{
   background-blend-mode: lighten, multiply;
   background-attachment: fixed;
 }
+
+@media only screen and (max-width: 600px) {
+  html{
+    background-size: 100%, 250px, 250px;
+    background-position: center, bottom -50px left -50px, top -50px right -75px;
+  }
+}
