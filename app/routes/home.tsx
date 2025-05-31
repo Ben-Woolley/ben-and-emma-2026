@@ -19,7 +19,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: 'Cormorant Garamond Variable',
-    fontSize: 16,
+    fontSize: 18,
     allVariants: {
       color: '#304a8a'
     }
