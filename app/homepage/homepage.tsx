@@ -37,7 +37,7 @@ function CustomTabPanel(props: TabPanelProps) {
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
             {...other}
-            sx={{p:0}}
+            sx={{ p: 0 }}
         >
             {value === index && <Container sx={{ p: 3 }}>{children}</Container>}
         </Container>
@@ -61,10 +61,24 @@ export function HomePage() {
     return (
         <Container aria-label='tabs-container'>
             <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'white', borderRadius: '25px' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="home tabs" variant="scrollable" scrollButtons={true} allowScrollButtonsMobile>
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="home tabs" 
+                    variant="scrollable" 
+                    scrollButtons={true} 
+                    allowScrollButtonsMobile
+                    sx={(theme) => ({
+                        '& .MuiTabs-flexContainer': {
+                            justifyContent: 'center',
+                            [theme.breakpoints.down("sm")]: {
+                                justifyContent: 'left'
+                            }
+                        }
+                    })}>
                     <Tab label="Schedule" {...a11yProps(0)} />
-                    <Tab label="Getting there" {...a11yProps(1)} />
-                    <Tab label="Honeymoon fund" {...a11yProps(2)} />
+                    <Tab label="Venue" {...a11yProps(1)} />
+                    <Tab label="Gifting" {...a11yProps(2)} />
                     <Tab label="Q&A" {...a11yProps(3)} />
                     <Tab label="RSVP" {...a11yProps(4)} />
                 </Tabs>
@@ -73,21 +87,22 @@ export function HomePage() {
                 <Schedule />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                <Grid container spacing={2} columns={2}>
-                    <Grid size={1}>
-                        <Typography><Link href='https://dorothyclivegarden.co.uk/'>Dorothy Clive Garden</Link> lives in the woodland quarter of Staffordshire.<br/>
-                        It's on Nantwich Road, 
+                <Grid container spacing={2}>
+                    <Grid size={{ sm: 12, md: 6 }}>
+                        <Typography><Link href='https://dorothyclivegarden.co.uk/'>Dorothy Clive Garden</Link> lives in the woodland quarter of Staffordshire.
                         </Typography>
+                        <Typography>The ceremony will be hosted in the Belvedere located at the top of the garden, followed by our reception in the tearoom.</Typography>
+                        <Typography>Guests are more than welcome to enjoy the garden after the cermony.</Typography>
                     </Grid>
-                    <Grid size={1}>
+                    <Grid size={{ sm: 12, md: 6 }}>
                         <iframe width="100%" height="300" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.3700052499771123%2C52.954455501498%2C-2.3663574457168584%2C52.95852090457078&amp;layer=mapnik&amp;marker=52.95648673726256%2C-2.3681812500000206" style={{ border: '1px solid black' }}></iframe>
                         <Link href="https://www.openstreetmap.org/?mlat=52.956487&amp;mlon=-2.368181#map=18/52.956487/-2.368181">View Larger Map</Link>
-                        <Typography sx={{pt: 2}} >
-                            Dorothy Clive Garden<br/>
-                            Willoughbridge<br/>
-                            Market Drayton<br/>
-                            Shropshire<br/>
-                            TF9 4EU<br/>
+                        <Typography sx={{ pt: 2 }} >
+                            Dorothy Clive Garden<br />
+                            Willoughbridge<br />
+                            Market Drayton<br />
+                            Shropshire<br />
+                            TF9 4EU<br />
                             Phone: 01630 647 237
                         </Typography>
                     </Grid>
@@ -113,6 +128,7 @@ function Qa() {
         <QuestionAndAnswer question="Where do I park?" answer="Dorothy Clive Garden has on-site parking near the entrance. Accessible parking is up the hill to the right after the entrance booth for guests who have notified that they need it." />
         <QuestionAndAnswer question="Can I take pictures on the day?" answer="A photographer and videographer will be there to capture the day. We will enforce a no-phones rule for the ceremony but you are free to take pictures during the reception." warning='Note that there will be flash photography.' />
         <QuestionAndAnswer question="Can I bring a plus-one?" answer='Sorry, unless explicitly invited you may not bring an extra guest.' />
+        <QuestionAndAnswer question='Where are the toilets?' answer='There are toilets at the end of the bottom car park and in the tearoom.' />
         <QuestionAndAnswer question="I still have more questions!" answer='Get in touch with Ben at xxxxxxxx or however else is convenient.' />
     </Container>
 }
@@ -131,40 +147,40 @@ function QuestionAndAnswer(props: QAProps) {
     </Box>
 }
 const Question = styled(Typography, {
-  name: 'MuiQuestion',
-  slot: 'value',
+    name: 'MuiQuestion',
+    slot: 'value',
 })(({ theme }) => ({
-  ...theme.typography.body1,
-  fontWeight: 'bolder',
-  textAlign: 'center'
+    ...theme.typography.body1,
+    fontWeight: 'bolder',
+    textAlign: 'center'
 }));
 const Answer = styled(Typography, {
-  name: 'MuiAnswer',
-  slot: 'value',
+    name: 'MuiAnswer',
+    slot: 'value',
 })(({ theme }) => ({
-  ...theme.typography.body1,
-  textAlign: 'center'
+    ...theme.typography.body1,
+    textAlign: 'center'
 }));
 export const Warning = styled(Typography, {
-  name: 'MuiWarning',
-  slot: 'value',
+    name: 'MuiWarning',
+    slot: 'value',
 })(({ theme }) => ({
-  ...theme.typography.body1,
-  textAlign: 'center',
-  fontWeight: 'bold',
-  fontSize: '16pt'
+    ...theme.typography.body1,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: '16pt'
 }));
 
 function Schedule() {
     return <Timeline aria-label='timeline' sx={(theme) => ({
         [`& .${timelineOppositeContentClasses.root}`]: {
-          [theme.breakpoints.down("lg")]: {
-            flex: 0.05
-          },
-          flex: 0.5
+            [theme.breakpoints.down("lg")]: {
+                flex: 0.05
+            },
+            flex: 0.5
         },
         p: 0,
-      })}>
+    })}>
         <ScheduleItem time='2:45pm' event='Guest Arrival' icon={<TimerIcon />}>
         </ScheduleItem>
         <ScheduleItem time='3:30pm' event='Ceremony begins' icon={<NotificationsIcon />}>
@@ -209,7 +225,7 @@ function ScheduleItem(props: ScheduleItemProps) {
         <TimelineContent>
             <Typography variant='h6'>{props.time} - {props.event}</Typography>
             {props.children}
-            </TimelineContent>
+        </TimelineContent>
     </TimelineItem>
 }
 function LastScheduleItem(props: ScheduleItemProps) {
