@@ -47,12 +47,12 @@ const theme = createTheme({
         }),
         h5: ({theme}) => ({
           [theme.breakpoints.down("sm")]: {
-            fontSize: '10pt'
+            fontSize: '14pt'
           }
         }),
         h6: ({theme}) => ({
           [theme.breakpoints.down("sm")]: {
-            fontSize: '10pt'
+            fontSize: '12pt'
           }
         })
       }
@@ -78,7 +78,13 @@ function Home() {
 
 function Header() {
   return <Box >
-    <Container maxWidth={false} sx={{ p: 5 }}>
+    <Container maxWidth={false} sx={(theme) => ({ 
+      p: 5,
+      [theme.breakpoints.down("lg")]: {
+        p: 2
+      }
+    })
+  }>
       <Typography fontFamily={'Petit Formal Script'} variant="h5" align="center">The wedding of</Typography>
       <Grid container alignItems="center" justifyContent={"center"} letterSpacing={2} spacing={2} sx={{ textAlign: 'center' }}>
         <Typography variant="h2" align="center">
@@ -87,8 +93,8 @@ function Header() {
           Emma
         </Typography>
       </Grid>
-      <Typography fontWeight={"bold"} variant="h5" align="center">Saturday 30th May 2026</Typography>
-      <Typography variant="h5" align="center">Dorothy Clive Garden, TF9 4EU</Typography>
+      <Typography fontWeight={"bold"} variant="h6" align="center">Saturday 30th May 2026</Typography>
+      <Typography variant="h6" align="center">Dorothy Clive Garden, TF9 4EU</Typography>
     </Container>
   </Box>
 }
