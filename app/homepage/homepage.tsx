@@ -8,9 +8,9 @@ import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineContent, { timelineContentClasses } from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import { TimelineOppositeContent } from '@mui/lab';
+import TimelineOppositeContent, { timelineOppositeContentClasses, } from '@mui/lab/TimelineOppositeContent';
 
 import TimerIcon from '@mui/icons-material/Timer';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -37,6 +37,7 @@ function CustomTabPanel(props: TabPanelProps) {
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
             {...other}
+            sx={{p:0}}
         >
             {value === index && <Container sx={{ p: 3 }}>{children}</Container>}
         </Container>
@@ -58,7 +59,7 @@ export function HomePage() {
     };
 
     return (
-        <Container>
+        <Container aria-label='tabs-container'>
             <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'white', borderRadius: '25px' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="home tabs" variant="scrollable" scrollButtons={true} allowScrollButtonsMobile>
                     <Tab label="Schedule" {...a11yProps(0)} />
@@ -155,7 +156,15 @@ export const Warning = styled(Typography, {
 }));
 
 function Schedule() {
-    return <Timeline position='alternate'>
+    return <Timeline aria-label='timeline' sx={(theme) => ({
+        [`& .${timelineOppositeContentClasses.root}`]: {
+          [theme.breakpoints.down("lg")]: {
+            flex: 0.05
+          },
+          flex: 0.5
+        },
+        p: 0,
+      })}>
         <ScheduleItem time='2:45pm' icon={<TimerIcon />}>
             <Typography>Guest arrival</Typography>
         </ScheduleItem>
@@ -172,6 +181,7 @@ function Schedule() {
         </ScheduleItem>
         <ScheduleItem time='5:30pm' icon={<EmojiFoodBeverageIcon />}>
             <Typography>Afternoon tea</Typography>
+            <Typography>Ahh, nothing like a nice cuppa tea!</Typography>
         </ScheduleItem>
         <ScheduleItem time='6:00pm' icon={<CakeIcon />}>
             <Typography>Cake cutting</Typography>
@@ -200,20 +210,26 @@ interface ScheduleItemProps {
 }
 function ScheduleItem(props: ScheduleItemProps) {
     return <TimelineItem>
-        <TimelineOppositeContent>{props.time}</TimelineOppositeContent>
+        <TimelineOppositeContent></TimelineOppositeContent>
         <TimelineSeparator>
             <TimelineDot color='primary'>{props.icon}</TimelineDot>
             <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent>{props.children}</TimelineContent>
+        <TimelineContent>
+            <Typography variant='h5'>{props.time}</Typography>
+            {props.children}
+            </TimelineContent>
     </TimelineItem>
 }
 function LastScheduleItem(props: ScheduleItemProps) {
     return <TimelineItem>
-        <TimelineOppositeContent>{props.time}</TimelineOppositeContent>
+        <TimelineOppositeContent></TimelineOppositeContent>
         <TimelineSeparator>
             <TimelineDot color='primary'>{props.icon}</TimelineDot>
         </TimelineSeparator>
-        <TimelineContent>{props.children}</TimelineContent>
+        <TimelineContent>
+            <Typography variant='h5'>{props.time}</Typography>
+            {props.children}
+        </TimelineContent>
     </TimelineItem>
 }
