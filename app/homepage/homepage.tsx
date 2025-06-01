@@ -165,38 +165,29 @@ function Schedule() {
         },
         p: 0,
       })}>
-        <ScheduleItem time='2:45pm' icon={<TimerIcon />}>
-            <Typography>Guest arrival</Typography>
+        <ScheduleItem time='2:45pm' event='Guest Arrival' icon={<TimerIcon />}>
         </ScheduleItem>
-        <ScheduleItem time='3:30pm' icon={<NotificationsIcon />}>
-            <Typography>Ceremony begins</Typography>
+        <ScheduleItem time='3:30pm' event='Ceremony begins' icon={<NotificationsIcon />}>
         </ScheduleItem>
-        <ScheduleItem time='4:15pm' icon={<PhotoCameraIcon />}>
-            <Typography>Drinks & photos</Typography>
+        <ScheduleItem time='4:15pm' event='Drinks & photos' icon={<PhotoCameraIcon />}>
             <Typography variant='body2'>Enjoy a glass of prosecco in the gardens</Typography>
         </ScheduleItem>
-        <ScheduleItem time='5:00pm' icon={<IcecreamIcon />}>
-            <Typography>Ice cream time</Typography>
+        <ScheduleItem time='5:00pm' event='Ice cream' icon={<IcecreamIcon />}>
             <Typography variant='body2'>An ice cream cart will be set up near the tea room</Typography>
         </ScheduleItem>
-        <ScheduleItem time='5:30pm' icon={<EmojiFoodBeverageIcon />}>
-            <Typography>Afternoon tea</Typography>
+        <ScheduleItem time='5:30pm' event='Afternoon tea' icon={<EmojiFoodBeverageIcon />}>
             <Typography>Ahh, nothing like a nice cuppa tea!</Typography>
         </ScheduleItem>
-        <ScheduleItem time='6:00pm' icon={<CakeIcon />}>
-            <Typography>Cake cutting</Typography>
+        <ScheduleItem time='6:00pm' event='Cake cutting' icon={<CakeIcon />}>
             <Typography variant='body2'>Nothing like cake after tea and cake</Typography>
         </ScheduleItem>
-        <ScheduleItem time='6:15pm' icon={<NightlifeIcon />}>
-            <Typography>First dance</Typography>
+        <ScheduleItem time='6:15pm' event='First dance' icon={<NightlifeIcon />}>
             <Typography variant='body2'>Join us in the tea room!</Typography>
         </ScheduleItem>
-        <ScheduleItem time='7:30pm' icon={<LocalPizzaIcon />}>
-            <Typography>Pizza time</Typography>
+        <ScheduleItem time='7:30pm' event='Pizza time' icon={<LocalPizzaIcon />}>
             <Typography variant='body2'>Jordy's Pizza will be available near the Bryan Mayer Pavilion</Typography>
         </ScheduleItem>
-        <LastScheduleItem time='12:00am' icon={<LocalTaxiIcon />}>
-            <Typography>Carriages</Typography>
+        <LastScheduleItem time='12:00am' event='Carriages' icon={<LocalTaxiIcon />}>
             <Typography variant='body2'>Music stops at 11:30 & everyone must be gone by midnight</Typography>
         </LastScheduleItem>
     </Timeline>
@@ -206,7 +197,7 @@ interface ScheduleItemProps {
     children?: React.ReactNode
     icon: React.ReactNode
     time: string,
-    event?: string
+    event: string
 }
 function ScheduleItem(props: ScheduleItemProps) {
     return <TimelineItem>
@@ -216,7 +207,7 @@ function ScheduleItem(props: ScheduleItemProps) {
             <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent>
-            <Typography variant='h5'>{props.time}</Typography>
+            <Typography variant='h6'>{props.time} - {props.event}</Typography>
             {props.children}
             </TimelineContent>
     </TimelineItem>
@@ -228,7 +219,7 @@ function LastScheduleItem(props: ScheduleItemProps) {
             <TimelineDot color='primary'>{props.icon}</TimelineDot>
         </TimelineSeparator>
         <TimelineContent>
-            <Typography variant='h5'>{props.time}</Typography>
+            <Typography variant='h6'>{props.time} - {props.event}</Typography>
             {props.children}
         </TimelineContent>
     </TimelineItem>
