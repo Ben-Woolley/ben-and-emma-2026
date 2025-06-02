@@ -129,7 +129,7 @@ function Qa() {
         <QuestionAndAnswer question="Can I take pictures on the day?" answer="A photographer and videographer will be there to capture the day. We will enforce a no-phones rule for the ceremony but you are free to take pictures during the reception." warning='Note that there will be flash photography.' />
         <QuestionAndAnswer question="Can I bring a plus-one?" answer='Sorry, unless explicitly invited you may not bring an extra guest.' />
         <QuestionAndAnswer question='Where are the toilets?' answer='There are toilets at the end of the bottom car park and in the tearoom.' />
-        <QuestionAndAnswer question="I still have more questions!" answer='Get in touch with Ben at xxxxxxxx or however else is convenient.' />
+        <QuestionAndAnswer question="I still have more questions!" answer='Get in touch with Ben or Emma however is convenient.' />
     </Container>
 }
 interface QAProps {
