@@ -38,7 +38,7 @@ function CustomTabPanel(props: TabPanelProps) {
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
             {...other}
-            sx={{ p: 0, backgroundColor: '#ffffff99'}}
+            sx={{ p: 0, backgroundColor: '#ffffff99' }}
         >
             {value === index && <Container sx={{ p: 3 }}>{children}</Container>}
         </Container>
@@ -65,9 +65,9 @@ export function HomePage() {
                 <Tabs
                     value={value}
                     onChange={handleChange}
-                    aria-label="home tabs" 
-                    variant="scrollable" 
-                    scrollButtons={true} 
+                    aria-label="home tabs"
+                    variant="scrollable"
+                    scrollButtons={true}
                     allowScrollButtonsMobile
                     sx={(theme) => ({
                         '& .MuiTabs-flexContainer': {
@@ -88,10 +88,10 @@ export function HomePage() {
                 <Schedule />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                <Masonry spacing={2} columns={{sm: 1, md: 2}}>
+                <Masonry spacing={2} columns={{ sm: 1, md: 2 }}>
                     <Grid size={{ sm: 12, md: 6 }} >
                         <iframe width="100%" height="300" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.3700052499771123%2C52.954455501498%2C-2.3663574457168584%2C52.95852090457078&amp;layer=mapnik&amp;marker=52.95648673726256%2C-2.3681812500000206" style={{ border: '1px solid black' }}></iframe>
-                        <Button variant="outlined" sx={{width: '100%'}} href="https://www.openstreetmap.org/?mlat=52.956487&amp;mlon=-2.368181#map=18/52.956487/-2.368181">View Larger Map</Button>
+                        <Button variant="outlined" sx={{ width: '100%' }} href="https://www.openstreetmap.org/?mlat=52.956487&amp;mlon=-2.368181#map=18/52.956487/-2.368181">View Larger Map</Button>
                         <Typography sx={{ pt: 2 }} >
                             Dorothy Clive Garden<br />
                             Willoughbridge<br />
@@ -113,24 +113,35 @@ export function HomePage() {
                         <Typography variant='h5'>Food</Typography>
                         <Typography>The afternoon tea will be buffet-style. There's no seating plan so feel free to mingle and sit wherever you like!</Typography>
                         <Typography>For pizza time we're bringing in <Link href='https://www.jordyspizza.co.uk/'>Jordy's Pizza</Link>. They'll be set up in a stand in the area between the tearoom and the Bryan Mayer Pavilion for you to order one of a set list of pizzas, plus some sides will be available.</Typography>
-                        <Typography sx={{fontWeight: 'bold'}}>There will be vegan and gluten free options available for those who need it. Please tell us your dietary requirements in your RSVP!</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>There will be vegan and gluten free options available for those who need it. Please tell us your dietary requirements in your RSVP!</Typography>
                     </Grid>
                 </Masonry>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-                <Container>
-                    <Typography>Gifting</Typography>
-                </Container>
+                <Box sx={{ textAlign: 'center' }}>
+                    <Typography>Thank you for considering getting a gift for us!</Typography>
+                    <Typography>We would very much appreciate contributions to our honeymoon fund.</Typography>
+                    <Typography>This is obviously not mandatory, having you be here for our special day is plenty.</Typography>
+                    <br/>
+                    <Typography>Contact us directly to get our bank details</Typography>
+                </Box>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={3}>
                 <Qa />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={4}>
-                <Container>
-                    <Typography>Gifting</Typography>
-                </Container>
+                <Box sx={{ textAlign: 'center' }}>
+                    <Typography>We hope you can make it! But if you can't please tell us as soon as you can.</Typography>
+                    <Typography sx={{ fontWeight: 'bold' }}>You will need the verification code on your invitation to complete the RSVP form.</Typography>
+                    <br />
+                    <Container sx={{ width: '100%', justifyContent: 'center', display: 'flex' }} >
+                        <Button target='_blank' variant='contained' size='large' href="https://forms.gle/aWxr987MAFZUnodNA">RSVP</Button>
+                    </Container>
+                    <br/>
+                    <Typography>If you have lost your invitation or the verification code, contact Ben or Emma to get it again.</Typography>
+                </Box>
             </CustomTabPanel>
-        </Container>
+        </Container >
     )
 }
 
