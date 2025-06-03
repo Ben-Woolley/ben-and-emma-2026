@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Grid, Link, styled, Typography } from '@mui/material';
+import { Button, Grid, Link, styled, Typography } from '@mui/material';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -87,16 +87,10 @@ export function HomePage() {
                 <Schedule />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                <Grid container spacing={2}>
-                    <Grid size={{ sm: 12, md: 6 }}>
-                        <Typography><Link href='https://dorothyclivegarden.co.uk/'>Dorothy Clive Garden</Link> lives in the woodland quarter of Staffordshire.
-                        </Typography>
-                        <Typography>The ceremony will be hosted in the Belvedere located at the top of the garden, followed by our reception in the tearoom.</Typography>
-                        <Typography>Guests are more than welcome to enjoy the garden after the cermony.</Typography>
-                    </Grid>
-                    <Grid size={{ sm: 12, md: 6 }}>
+                <Grid container spacing={2} sx={{backgroundColor: '#ffffff99'}}>
+                    <Grid size={{ sm: 12, md: 6 }} >
                         <iframe width="100%" height="300" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.3700052499771123%2C52.954455501498%2C-2.3663574457168584%2C52.95852090457078&amp;layer=mapnik&amp;marker=52.95648673726256%2C-2.3681812500000206" style={{ border: '1px solid black' }}></iframe>
-                        <Link href="https://www.openstreetmap.org/?mlat=52.956487&amp;mlon=-2.368181#map=18/52.956487/-2.368181">View Larger Map</Link>
+                        <Button variant="outlined" sx={{width: '100%'}} href="https://www.openstreetmap.org/?mlat=52.956487&amp;mlon=-2.368181#map=18/52.956487/-2.368181">View Larger Map</Button>
                         <Typography sx={{ pt: 2 }} >
                             Dorothy Clive Garden<br />
                             Willoughbridge<br />
@@ -105,6 +99,19 @@ export function HomePage() {
                             TF9 4EU<br />
                             Phone: 01630 647 237
                         </Typography>
+                    </Grid>
+                    <Grid size={{ sm: 12, md: 6 }}>
+                        <Typography variant='h5'>About the day</Typography>
+                        <Typography><Link href='https://dorothyclivegarden.co.uk/'>Dorothy Clive Garden</Link> lives in the woodland quarter of Staffordshire.
+                        </Typography>
+                        <Typography>The ceremony will be hosted in the Belvedere located at the top of the garden if weather permits. If not the ceremony will take place in the Bryan Mayer Pavilion which is to the right at the top of the path from the entrance.</Typography>
+                        <Typography>The reception will be held in and around the tearoom.</Typography>
+                        <Typography>Guests are more than welcome to enjoy the garden after the cermony.</Typography>
+                        <br/>
+                        <Typography variant='h5'>Food</Typography>
+                        <Typography>The afternoon tea will be buffet-style - there is no seating plan so feel free to mingle and sit wherever you like!</Typography>
+                        <Typography>For pizza time we're bringing in <Link href='https://www.jordyspizza.co.uk/'>Jordy's Pizza</Link>. They'll be set up in a stand in the area between the tearoom and the Bryan Mayer Pavilion for you to order one of a set list of pizzas, plus some sides will be available.</Typography>
+                        <Typography sx={{fontWeight: 'bold'}}>There will be vegan and gluten free options available for those who need it. Please tell us your dietary requirements in your RSVP!</Typography>
                     </Grid>
                 </Grid>
             </CustomTabPanel>
