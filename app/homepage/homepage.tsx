@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Button, Grid, Link, styled, Typography } from '@mui/material';
+import { Button, Grid, IconButton, Link, Modal, styled, Tooltip, Typography } from '@mui/material';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -21,7 +21,9 @@ import EmojiFoodBeverageIcon from '@mui/icons-material/EmojiFoodBeverage';
 import IcecreamIcon from '@mui/icons-material/Icecream';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import NightlifeIcon from '@mui/icons-material/Nightlife';
+import ShareIcon from '@mui/icons-material/Share';
 import { Masonry } from '@mui/lab';
+import QRCode from 'react-qr-code';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -59,8 +61,24 @@ export function HomePage() {
         setValue(newValue);
     };
 
+    const [shareIsOpen, setShareIsOpen] = React.useState(false);
+    const shareOpen = () => setShareIsOpen(true)
+    const shareClose = () => setShareIsOpen(false)
+
     return (
         <Container aria-label='tabs-container'>
+            <Tooltip title="Share page" placement='left' arrow>
+                <IconButton onClick={shareOpen} size='large' color='primary' sx={{ position: 'absolute', bottom: 20, right: 20 }}><ShareIcon /></IconButton>
+            </Tooltip>
+            <Modal
+                open={shareIsOpen}
+                onClose={shareClose}
+            >
+                <Box onClick={shareClose} sx={{ position: 'absolute', top: '50%', 'left': '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, }} >
+                    <QRCode value="https://wedding.benjam.xyz" fgColor='#304a8a' />
+                    <Typography align='center'><Link href="https://wedding.benjam.xyz">https://wedding.benjam.xyz</Link></Typography>
+                </Box>
+            </Modal>
             <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'white', borderRadius: '25px' }}>
                 <Tabs
                     value={value}
@@ -123,7 +141,7 @@ export function HomePage() {
                     <Typography>Thank you for considering getting a gift for us!</Typography>
                     <Typography>We would very much appreciate contributions to our honeymoon fund.</Typography>
                     <Typography>This is obviously not mandatory, having you be here for our special day is plenty.</Typography>
-                    <br/>
+                    <br />
                     <Typography>Contact us directly to get our bank details</Typography>
                 </Box>
             </CustomTabPanel>
@@ -138,7 +156,7 @@ export function HomePage() {
                     <Container sx={{ width: '100%', justifyContent: 'center', display: 'flex' }} >
                         <Button target='_blank' variant='contained' size='large' href="https://forms.gle/aWxr987MAFZUnodNA">RSVP</Button>
                     </Container>
-                    <br/>
+                    <br />
                     <Typography>If you have lost your invitation or the verification code, contact Ben or Emma to get it again.</Typography>
                 </Box>
             </CustomTabPanel>
