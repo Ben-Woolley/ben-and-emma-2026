@@ -91,7 +91,8 @@ export function HomePage() {
                 <Masonry spacing={2} columns={{ sm: 1, md: 2 }}>
                     <Grid size={{ sm: 12, md: 6 }} >
                         <iframe width="100%" height="300" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.3700052499771123%2C52.954455501498%2C-2.3663574457168584%2C52.95852090457078&amp;layer=mapnik&amp;marker=52.95648673726256%2C-2.3681812500000206" style={{ border: '1px solid black' }}></iframe>
-                        <Button variant="outlined" sx={{ width: '100%' }} href="https://www.openstreetmap.org/?mlat=52.956487&amp;mlon=-2.368181#map=18/52.956487/-2.368181">View Larger Map</Button>
+                        <Button variant="outlined" target='_blank' sx={{ width: '100%', mb: '5px' }} href="https://www.openstreetmap.org/?mlat=52.956487&amp;mlon=-2.368181#map=18/52.956487/-2.368181">View Larger Map</Button>
+                        <Button variant='outlined' target='_blank' sx={{ width: '100%' }} href='Dorothy Clive Garden Map.pdf'>Map of the gardens</Button>
                         <Typography sx={{ pt: 2 }} >
                             Dorothy Clive Garden<br />
                             Willoughbridge<br />
