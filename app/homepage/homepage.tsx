@@ -68,7 +68,7 @@ export function HomePage() {
     return (
         <Container aria-label='tabs-container'>
             <Tooltip title="Share page" placement='left' arrow>
-                <IconButton onClick={shareOpen} size='large' color='primary' sx={{ position: 'absolute', bottom: 20, right: 20 }}><ShareIcon /></IconButton>
+                <IconButton onClick={shareOpen} size='large' color='primary' sx={{ position: 'fixed', bottom: 20, right: 20 }}><ShareIcon /></IconButton>
             </Tooltip>
             <Modal
                 open={shareIsOpen}
