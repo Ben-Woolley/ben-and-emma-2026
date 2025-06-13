@@ -142,7 +142,14 @@ export function HomePage() {
                     <Typography>We would very much appreciate contributions to our honeymoon fund.</Typography>
                     <Typography>This is obviously not mandatory, having you be here for our special day is plenty.</Typography>
                     <br />
-                    <Typography>Contact us directly to get our bank details</Typography>
+                    <Typography>{"We're"} using <Box display={"inline"} fontWeight={"bold"}>Prezola</Box> - a website that lets you contribute towards gifts and experiences.</Typography>
+                    <Typography>So whether you help with our flights or buy us a meal out, everything is greatly appreciated!</Typography>
+                    <br />
+                    <Container sx={{ width: '100%', justifyContent: 'center', display: 'flex' }} >
+                        <Button target='_blank' variant='contained' size='large' href="https://prezola.com/buy/view/246951">our Prezola</Button>
+                    </Container>
+                    <br />
+                    <Typography>Or if you prefer, you can contact us directly to get our bank details</Typography>
                 </Box>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={3}>
