@@ -25,32 +25,32 @@ const theme = createTheme({
   components: {
     MuiTypography: {
       styleOverrides: {
-        body1: ({theme}) => ({
+        body1: ({ theme }) => ({
           [theme.breakpoints.down("sm")]: {
             fontSize: '12pt'
           }
         }),
-        body2: ({theme}) => ({
+        body2: ({ theme }) => ({
           [theme.breakpoints.down("sm")]: {
             fontSize: '10pt'
           }
         }),
-        h2: ({theme}) => ({
+        h2: ({ theme }) => ({
           [theme.breakpoints.down("sm")]: {
             fontSize: '20pt'
           }
         }),
-        h4: ({theme}) => ({
+        h4: ({ theme }) => ({
           [theme.breakpoints.down("sm")]: {
             fontSize: '16pt'
           }
         }),
-        h5: ({theme}) => ({
+        h5: ({ theme }) => ({
           [theme.breakpoints.down("sm")]: {
             fontSize: '14pt'
           }
         }),
-        h6: ({theme}) => ({
+        h6: ({ theme }) => ({
           [theme.breakpoints.down("sm")]: {
             fontSize: '12pt'
           }
@@ -78,13 +78,13 @@ function Home() {
 
 function Header() {
   return <Box >
-    <Container maxWidth={false} sx={(theme) => ({ 
+    <Container maxWidth={false} sx={(theme) => ({
       p: 5,
       [theme.breakpoints.down("lg")]: {
         p: 2
       }
     })
-  }>
+    }>
       <Typography fontFamily={'Petit Formal Script'} variant="h5" align="center">The wedding of</Typography>
       <Grid container alignItems="center" justifyContent={"center"} letterSpacing={2} spacing={2} sx={{ textAlign: 'center' }}>
         <Typography variant="h2" align="center">
