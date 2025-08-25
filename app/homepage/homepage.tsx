@@ -96,16 +96,28 @@ export function HomePage() {
                         }
                     })}>
                     <Tab label="Schedule" {...a11yProps(0)} />
-                    <Tab label="Venue" {...a11yProps(1)} />
-                    <Tab label="Gifting" {...a11yProps(2)} />
-                    <Tab label="Q&A" {...a11yProps(3)} />
-                    <Tab label="RSVP" {...a11yProps(4)} />
+                    <Tab label="RSVP" {...a11yProps(1)} />
+                    <Tab label="Venue" {...a11yProps(2)} />
+                    <Tab label="Gifting" {...a11yProps(3)} />
+                    <Tab label="Q&A" {...a11yProps(4)} />
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
                 <Schedule />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
+                <Box sx={{ textAlign: 'center' }}>
+                    <Typography>We hope you can make it! But if you can't please tell us as soon as you can.</Typography>
+                    <Typography sx={{ fontWeight: 'bold' }}>You will need the verification code on your invitation to complete the RSVP form.</Typography>
+                    <br />
+                    <Container sx={{ width: '100%', justifyContent: 'center', display: 'flex' }} >
+                        <Button target='_blank' variant='outlined' size='large' href="https://forms.gle/aWxr987MAFZUnodNA"><Box fontWeight={'bold'}>RSVP</Box></Button>
+                    </Container>
+                    <br />
+                    <Typography>If you have lost your invitation or the verification code, contact Ben or Emma to get it again.</Typography>
+                </Box>
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={2}>
                 <Masonry spacing={2} columns={{ sm: 1, md: 2 }}>
                     <Grid size={{ sm: 12, md: 6 }} >
                         <iframe width="100%" height="300" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.3700052499771123%2C52.954455501498%2C-2.3663574457168584%2C52.95852090457078&amp;layer=mapnik&amp;marker=52.95648673726256%2C-2.3681812500000206" style={{ border: '1px solid black' }}></iframe>
@@ -136,7 +148,7 @@ export function HomePage() {
                     </Grid>
                 </Masonry>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
+            <CustomTabPanel value={value} index={3}>
                 <Box sx={{ textAlign: 'center' }}>
                     <Typography>Thank you for considering getting a gift for us!</Typography>
                     <Typography>We would very much appreciate contributions to our honeymoon fund.</Typography>
@@ -154,20 +166,8 @@ export function HomePage() {
                     <Typography>Or if you prefer, you can contact us directly to get our bank details</Typography>
                 </Box>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={3}>
-                <Qa />
-            </CustomTabPanel>
             <CustomTabPanel value={value} index={4}>
-                <Box sx={{ textAlign: 'center' }}>
-                    <Typography>We hope you can make it! But if you can't please tell us as soon as you can.</Typography>
-                    <Typography sx={{ fontWeight: 'bold' }}>You will need the verification code on your invitation to complete the RSVP form.</Typography>
-                    <br />
-                    <Container sx={{ width: '100%', justifyContent: 'center', display: 'flex' }} >
-                        <Button target='_blank' variant='outlined' size='large' href="https://forms.gle/aWxr987MAFZUnodNA"><Box fontWeight={'bold'}>RSVP</Box></Button>
-                    </Container>
-                    <br />
-                    <Typography>If you have lost your invitation or the verification code, contact Ben or Emma to get it again.</Typography>
-                </Box>
+                <Qa />
             </CustomTabPanel>
         </Container >
     )
