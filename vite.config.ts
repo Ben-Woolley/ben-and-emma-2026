@@ -10,5 +10,5 @@ export default defineConfig({
       $assets: resolve('./public')
     }
   },
-  base: "/ben-and-emma-2026/"
+  base: ""
 });
